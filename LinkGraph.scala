@@ -12,13 +12,12 @@ object LinkGraph
   {
     val sparkConf = new SparkConf().setAppName("LinkGraph")
     val sc = new SparkContext(sparkConf)
-    val input = sc.textFile("/Users/simeonmeerson/Desktop/small-articles-tab") // your output directory from the last assignment
+    val input = sc.textFile("/Users/.../small-articles-tab") // your output directory from the last assignment
       //load old text file
 
     val page = input.map{ l =>
-      val pair = l.split("\t", 2)
-        //split by tab
-      (pair(0), pair(1)) // get the two fields: title and text
+      val pair = l.split("\t", 2)            //split by tab
+      (pair(0), pair(1))                     // Key Value Pairs fields: title and text
     }
  
     val links = page.map(r => (r._1, extractLinks(r._2))) // extract links from text
@@ -34,12 +33,10 @@ object LinkGraph
  
   def extractLinks(text: String) : String = 
   {
-    val pattern = """\[\[[^:]*?\]\]""".r
-      //regex patter to extract all text between [[]] except those containing ":"
+    val pattern = """\[\[[^:]*?\]\]""".r        // Regular Expression extracts all text
+                                                // between [[]] except those containing ":"
     val str = text
-      
-    val data = (pattern findAllIn str)
-      //find all regex patterns in the data
+    val data = (pattern findAllIn str)          // find all regex patterns in the data
 
     var result = ""
     data.foreach(x => 
@@ -51,11 +48,7 @@ object LinkGraph
         //for all the lines that contain the characters
       result += (rightside+ "\t");
     })
-
     //val line  = data.foreach(x => {data + (x)})
-  
     return result
-
-
   }
 }

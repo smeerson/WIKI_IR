@@ -49,37 +49,21 @@ object wordCount{										//	Opening A
 	
 
 	// println(wordsF_1.reduceByKey(_+_).count)
-	
 	// wordsF_1.reduceByKey(_+_).collect.foreach(println)					// Words Counted println
  
 	
 
 	val unionRDD = RDDfile1.union(RDDfile2)							// value RDD to unify file1 RDD w/ file2 RDD
- 
  	val reducedRDD = unionRDD.reduceByKey(_+_)						//
 
 	//reducedRDD.collect.foreach(println)							// print union RDD?
 
-
-
-		// Lecture Notes "Hello how are you example" Lecture 4 pg 32. according to "angela"	
-		// flat map gives
-		// CREATE A LIST:
-		// ONE IS HELLO, ONE IS HOW ARE YOU
-		// NOW I WILL:
-		// EXAMPLE DOES FLATMAP SPLIT BY SPACE
-		// WE WANT TO USE MAP
-
 	/* Extra Credit	*/
 
 //	val args = sc.parallelize(List("Hello", "How was your day?"))
-
 //	val string = args.mkString(" ")
 //	val stringMap = string.map(x=>x.split(" "))
 //	stringMap.foreach(x=>x.foreach(println))
-
-
-
 
 	reducedRDD.saveAsTextFile("/Users/simeonmeerson/programming/spark_disk/projects/output1.txt")
 

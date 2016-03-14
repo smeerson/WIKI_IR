@@ -1,2 +1,1 @@
-# DataScience
-Some Projects working with Data written in Scala using Apache Spark
+# Wikipedia Page Count, Article & Pattern Extraction, LinkGraph, PageRank Scala Apache Spark
